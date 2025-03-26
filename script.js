@@ -99,3 +99,23 @@ setInterval(updateElapsedTime, 1000);
 setInterval(updateDateTime, 1000);
 updateElapsedTime();
 updateDateTime();
+
+document.getElementById("submit_btn").addEventListener("click", function() {
+         let n = parseInt(document.getElementById("number_input").value);
+         if (isNaN(n) || n <= 0) {
+             document.getElementById("sequence").innerText = "請輸入正整數";
+             document.getElementById("steps").innerText = "";
+            return;
+        }
+            let k = 0;
+            let s = [];
+            while (true) {
+            s.push(n);
+            if (n === 1) break;
+            n = (n % 2 === 0) ? n / 2 : 3 * n + 1;
+            k++;
+        }
+
+        document.getElementById("sequence").innerText = "序列: " + s.join(", ");
+        document.getElementById("steps").innerText = "總步數: " + k;
+    });
