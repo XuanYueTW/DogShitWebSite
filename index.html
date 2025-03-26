@@ -36,8 +36,9 @@
     </div>
 
     <script type="text/python">
-        from browser import document
-
+        from browser import document, bind
+        
+        @bind("#submit_btn", "click")
         def collatz(event):
             try:
                 n = int(document["number_input"].value)
@@ -61,9 +62,6 @@
             except ValueError:
                 document["sequence"].text = "請輸入有效的數字！"
                 document["steps"].text = ""
-             def ready():
-               document["submit_btn"].bind("click", collatz)  # 在 DOM 加載完成後綁定事件
-             ready()
     </script>
     <script src="script.js"></script>
     </body>
