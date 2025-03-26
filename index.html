@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>you're dog shit</title>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/brython/3.11.3/brython.min.js"></script>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -24,7 +25,45 @@
     <a href="images/downs_tai_watching_furry.png" target="_blank" style="color: rgb(0, 0, 0); text-decoration: underline; font-size: 18px;">
         唐苔喜歡福瑞
     </a>
+    <h2>Collatz 序列計算</h2>
+    <input type="number" id="number_input" placeholder="輸入一個數字">
+    <button id="submit_btn">計算</button>
+
+    <div id="result_div" style="margin-top: 20px; padding: 10px; border: 1px solid black;">
+        <p><strong>結果：</strong></p>
+        <p id="sequence"></p>
+        <p id="steps"></p>
+    </div>
+
+    <script type="text/python">
+        from browser import document
+
+        def collatz(event):
+            try:
+                n = int(document["number_input"].value)
+                k = 0
+                s = []
+                while True:
+                    s.insert(k, n)
+                    if n == 1:
+                        break
+                    elif n % 2 == 0:
+                        n = n // 2
+                        k += 1
+                    else:
+                        n = 3 * n + 1
+                        k += 1
+                
+                # 顯示結果到 div
+                document["sequence"].text = f"序列: {', '.join(map(str, s))}"
+                document["steps"].text = f"總步數: {k}"
+
+            except ValueError:
+                document["sequence"].text = "請輸入有效的數字！"
+                document["steps"].text = ""
+
+        document["submit_btn"].bind("click", collatz）
+    </script>
     <script src="script.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/brython/3.11.3/brython.min.js"></script>
-</body>
+    </body>
 </html>
