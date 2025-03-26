@@ -25,7 +25,7 @@
     <a href="images/downs_tai_watching_furry.png" target="_blank" style="color: rgb(0, 0, 0); text-decoration: underline; font-size: 18px;">
         唐苔喜歡福瑞
     </a>
-    <h2>Collatz 序列計算</h2>
+    <h2>狗屎考拉茲猜想</h2>
     <input type="number" id="number_input" placeholder="輸入一個數字">
     <button id="submit_btn">計算</button>
 
@@ -61,8 +61,9 @@
             except ValueError:
                 document["sequence"].text = "請輸入有效的數字！"
                 document["steps"].text = ""
-
-        document["submit_btn"].bind("click", collatz）
+             def ready():
+               document["submit_btn"].bind("click", collatz)  # 在 DOM 加載完成後綁定事件
+             ready()
     </script>
     <script src="script.js"></script>
     </body>
