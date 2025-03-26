@@ -74,3 +74,8 @@ h1 {
     padding: 15px;
     color: white;
 }
+
+#submit_btn {
+    position: relative; /* 確保 z-index 生效 */
+    z-index: 1000; /* 提高層級 */
+}
