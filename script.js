@@ -103,7 +103,7 @@ updateDateTime();
 document.getElementById("Collatz").addEventListener("click", function() {
     let n = parseInt(document.getElementById("number_input").value);
     if (isNaN(n) || n <= 0) {
-        document.getElementById("sequence").innerText = "";
+        document.getElementById("sequence").innerText = "請輸入正整數";
         document.getElementById("steps").innerText = "";
         return;
     }
