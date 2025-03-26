@@ -76,6 +76,5 @@ h1 {
 }
 
 #submit_btn {
-    position: relative; /* 確保 z-index 生效 */
-    z-index: 1000; /* 提高層級 */
+    color: white;
 }
