@@ -29,39 +29,33 @@
     <input type="number" id="number_input" placeholder="輸入一個數字">
     <button id="submit_btn">計算</button>
 
-    <div id="result_div" style="margin-top: 20px; padding: 10px; border: 1px solid black;">
-        <p><strong>結果：</strong></p>
+    <div id="my_result" style="margin-top: 20px; padding: 10px; border: 1px solid black;">
+        <p><strong>計算結果：</strong></p>
         <p id="sequence"></p>
         <p id="steps"></p>
     </div>
 
-    <script type="text/python">
-        from browser import document, bind
-        
-        @bind("#submit_btn", "click")
-        def collatz(event):
-            try:
-                n = int(document["number_input"].value)
-                k = 0
-                s = []
-                while True:
-                    s.insert(k, n)
-                    if n == 1:
-                        break
-                    elif n % 2 == 0:
-                        n = n // 2
-                        k += 1
-                    else:
-                        n = 3 * n + 1
-                        k += 1
-                
-                # 顯示結果到 div
-                document["sequence"].text = f"序列: {', '.join(map(str, s))}"
-                document["steps"].text = f"總步數: {k}"
+    <script>
+        document.getElementById("submit_btn").addEventListener("click", function() {
+            let n = parseInt(document.getElementById("number_input").value);
+            if (isNaN(n) || n <= 0) {
+                document.getElementById("sequence").innerText = "請輸入正整數！";
+                document.getElementById("steps").innerText = "";
+                return;
+            }
 
-            except ValueError:
-                document["sequence"].text = "請輸入有效的數字！"
-                document["steps"].text = ""
+            let k = 0;
+            let s = [];
+            while (true) {
+                s.push(n);
+                if (n === 1) break;
+                n = (n % 2 === 0) ? n / 2 : 3 * n + 1;
+                k++;
+            }
+
+            document.getElementById("sequence").innerText = "序列: " + s.join(", ");
+            document.getElementById("steps").innerText = "總步數: " + k;
+        });
     </script>
     <script src="script.js"></script>
     </body>
