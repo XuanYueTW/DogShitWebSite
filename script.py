@@ -26,13 +26,16 @@ def standardize_and_plot(event):
 
     correlation = np.corrcoef(x_stdized, y_stdized)[0, 1]
 
+    # 創建 Matplotlib 圖形
     fig, axes = plt.subplots(1, 2, figsize=(10, 5))
 
+    # 原始數據圖
     axes[0].scatter(x_sequence, y_sequence, color='blue', label='origin')
     axes[0].axhline(0, color='gray', linestyle='--', linewidth=0.8)
     axes[0].axvline(0, color='gray', linestyle='--', linewidth=0.8)
     axes[0].legend()
 
+    # 標準化數據圖
     axes[1].scatter(x_stdized, y_stdized, color='red', label='standardization')
     axes[1].axhline(0, color='gray', linestyle='--', linewidth=0.8)
     axes[1].axvline(0, color='gray', linestyle='--', linewidth=0.8)
@@ -40,18 +43,18 @@ def standardize_and_plot(event):
 
     plt.tight_layout()
 
-    # 將圖片轉換為 base64 編碼
+    # **將 Matplotlib 圖片轉換為 Base64**
     buffer = BytesIO()
-    plt.savefig(buffer, format="png")
+    fig.savefig(buffer, format="png")  # 存為 PNG 圖片
     buffer.seek(0)
     img_base64 = base64.b64encode(buffer.read()).decode("utf-8")
     buffer.close()
 
-    # 更新網頁圖片
+    # **更新 HTML 圖片**
     img_element = document["plot_image"]
     img_element.attrs["src"] = f"data:image/png;base64,{img_base64}"
 
-    # 顯示相關係數
+    # **顯示相關係數**
     document["correlation_result"].text = f"標準化後的相關係數: {correlation:.4f}"
 
 document["calculate"].bind("click", standardize_and_plot)
