@@ -66,20 +66,8 @@ def standardize_and_plot(event):
 
     plt.tight_layout()
 
-    # 轉換圖形為 base64 圖片
-    canvas = FigureCanvas(fig)
-    buf = BytesIO()
-    canvas.print_png(buf)  # 直接輸出 PNG 圖片
-    buf.seek(0)
-    img_base64 = base64.b64encode(buf.getvalue()).decode()
-    buf.close()
-
-    # **顯示圖表**
-    document["plot"].clear()
-    document["plot"] <= html.IMG(src="data:image/png;base64," + img_base64)
-
-    # **顯示相關係數**
+    plt.show()
+    
     document["correlation_result"].text = f"標準化後的相關係數: {correlation:.4f}"
 
-# 綁定按鈕事件
 document["calculate"].bind("click", standardize_and_plot)
