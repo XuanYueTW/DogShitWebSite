@@ -7,6 +7,7 @@
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/brython/3.11.3/brython.min.js"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/brython@3.9.5/brython.min.js"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/brython@3.9.5/brython_stdlib.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/brython-matplotlib@0.1.0/brython_matplotlib.js"></script>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -50,7 +51,7 @@
 
     <div id="result" style="margin-top: 20px;">
         <p id="correlation_result"></p>
-        <div id="plot"></div>
+        <canvas id="plot_canvas"></canvas>
     </div>
     
     <script type="text/python" src="script.py"></script>
