@@ -53,8 +53,55 @@
         <p id="correlation_result"></p>
         <canvas id="plot_canvas"></canvas>
     </div>
-    
-    <script type="text/python" src="script.py"></script>
+   
+    <script type="text/python">
+from browser import document
+import numpy as np
+import matplotlib.pyplot as plt
+from io import BytesIO
+import base64
+
+def generate_plot(event):
+    x_values = document["x_input"].value.split()
+    y_values = document["y_input"].value.split()
+
+    try:
+        x_sequence = np.array(list(map(float, x_values)))
+        y_sequence = np.array(list(map(float, y_values)))
+    except ValueError:
+        document["error_message"].text = "請輸入正確的數據格式"
+        return
+
+    x_mean, y_mean = np.mean(x_sequence), np.mean(y_sequence)
+    x_std, y_std = np.std(x_sequence), np.std(y_sequence)
+    x_stdized = (x_sequence - x_mean) / x_std
+    y_stdized = (y_sequence - y_mean) / y_std
+
+    fig, axes = plt.subplots(1, 2, figsize=(10, 5))
+
+    axes[0].scatter(x_sequence, y_sequence, color='blue', label='原始數據')
+    axes[1].scatter(x_stdized, y_stdized, color='red', label='標準化後')
+
+    for ax in axes:
+        ax.axhline(0, color='gray', linestyle='--', linewidth=0.8)
+        ax.axvline(0, color='gray', linestyle='--', linewidth=0.8)
+        ax.legend()
+        ax.set_aspect('equal')
+
+    plt.tight_layout()
+
+    buf = BytesIO()
+    plt.savefig(buf, format="png")
+    buf.seek(0)
+    img_base64 = base64.b64encode(buf.read()).decode("utf-8")
+
+    document["plot_image"].attrs["src"] = f"data:image/png;base64,{img_base64}"
+    document["error_message"].text = ""
+
+document["plot_button"].bind("click", generate_plot)
+</script>
+
+
     <script src="script.js"></script>
     </body>
 </html>
