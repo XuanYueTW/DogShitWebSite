@@ -30,6 +30,14 @@ h1 {
     color: #ffffff;
 }
 
+h2 {
+    color: white;
+}
+
+h3 {
+    color: white;
+}
+
 #press {
     padding: 15px 30px;
     font-size: 20px;
@@ -46,7 +54,7 @@ h1 {
     flex-direction: column;
     justify-content: start;
     align-items: center;
-    height: 100vh;
+    height: 75vh;
 }
 
 #videoContainer {
@@ -75,10 +83,4 @@ h1 {
     color: white;
 }
 
-h2 {
-    color: white;
-}
 
-h3 {
-    color: white;
-}
