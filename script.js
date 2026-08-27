@@ -1,3 +1,10 @@
+if ('scrollRestoration' in history) {
+    history.scrollRestoration = 'manual';
+}
+
+window.scrollTo(0, 0);
+
+
 document.getElementById("press").addEventListener("click", function() {
     document.getElementById("CaoNiMaVideo").play();
     document.getElementById("press").style.display = "none";
@@ -127,8 +134,7 @@ const apis = [
     "https://futaloli.cyou/square"
   ];
 
-  const selectedUrl = apis[Math.floor(Math.random() * apis.length)];
-
+const selectedUrl = apis[Math.floor(Math.random() * apis.length)];
 const container = document.getElementById("random-api");
 if (container) {
     container.innerHTML = `<img src="${selectedUrl}" alt="隨機圖片" style="max-width: 100%; height: auto;">`;
