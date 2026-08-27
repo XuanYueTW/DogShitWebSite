@@ -92,10 +92,8 @@ h3 {
 }
 
 #random-api img {
-    width: 60%;
+    width: 70%;
     height: auto;
     display: block;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 500px;
+    margin: 500px auto 0 auto;
 }
