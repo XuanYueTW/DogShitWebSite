@@ -86,12 +86,12 @@ h3 {
     color: white;
 }
 
-#random-image-container {
+#random-api {
     color: white;
     text-align: center;
 }
 
-#random-image-container img {
+#random-api img {
     width: 60%;
     height: auto;
     display: block;
