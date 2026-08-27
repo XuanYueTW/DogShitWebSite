@@ -82,10 +82,14 @@ h3 {
     color: white;
 }
 
-#random-api {
+#random-image-container {
     color: white;
+    text-align: center;
+}
+
+#random-image-container img {
     width: 70%;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 50px; 
+    height: auto;
+    display: block;
+    margin: 50px auto 0 auto;
 }
