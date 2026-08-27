@@ -1,3 +1,7 @@
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     font-family: Arial, sans-serif;
     background-color: black;
@@ -88,8 +92,10 @@ h3 {
 }
 
 #random-image-container img {
-    width: 70%;
+    width: 60%;
     height: auto;
     display: block;
-    margin: 500px auto 0 auto;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 500px;
 }
