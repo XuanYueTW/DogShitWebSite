@@ -119,3 +119,15 @@ document.getElementById("Collatz").addEventListener("click", function() {
 document.getElementById("sequence").innerText = "序列: " + s.join(", ");
 document.getElementById("steps").innerText = "總步數: " + k;
 });
+
+
+const apis = [
+    "https://futaloli.cyou/landscape",
+    "https://futaloli.cyou/portrait",
+    "https://futaloli.cyou/square"
+  ];
+
+  const selectedUrl = apis[Math.floor(Math.random() * apis.length)];
+
+  document.getElementById("random-api").innerHTML = 
+    `<img src="${selectedUrl}" alt="隨機圖片" style="max-width: 100%; height: auto;">`;
