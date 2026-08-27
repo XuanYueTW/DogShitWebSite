@@ -129,5 +129,8 @@ const apis = [
 
   const selectedUrl = apis[Math.floor(Math.random() * apis.length)];
 
-  document.getElementById("random-api").innerHTML = 
-    `<img src="${selectedUrl}" alt="隨機圖片" style="max-width: 100%; height: auto;">`;
+const container = document.getElementById("random-api");
+if (container) {
+    container.innerHTML = `<img src="${selectedUrl}" alt="隨機圖片" style="max-width: 100%; height: auto;">`;
+};
+
